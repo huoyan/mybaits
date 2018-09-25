@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zxp.mybaits.dao.UserDao">
+
+    <insert id="add" parameterType="com.zxp.mybaits.User">
+        insert into user(
+        id,
+        username, <!-- 单位名称 -->
+         password
+        )
+        values (
+        #{id},
+        #{username}, <!-- 单位名称 -->
+        #{password} <!-- 密码 -->
+
+        )
+        <selectKey keyColumn="id" keyProperty="id" resultType="long">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+
+    <sql id="baseColumns">
+        `id`,
+        username, <!-- 单位名称 -->
+       password
+    </sql>
+
+</mapper>
